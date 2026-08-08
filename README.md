@@ -1,18 +1,16 @@
 # dark-2026.nvim
 
-A Neovim port of **2026 Dark**, the theme bundled with Visual Studio Code.
+A Neovim port of **Dark 2026**, the theme bundled with Visual Studio Code.
 
 Near-black surfaces (`#121314` editor, `#191a1b` panels), a teal/steel-blue
 accent (`#3994bc`), and GitHub-Dark-derived syntax colors. Hand-transcribed from
 the upstream theme rather than machine-converted, so every value is deliberate
 and every value is traceable — each one names the VS Code key it came from.
 
-<!-- TODO: screenshots -->
-<!--
-| Editor | Picker | Diff |
-| --- | --- | --- |
-| ![editor](doc/editor.png) | ![picker](doc/picker.png) | ![diff](doc/diff.png) |
--->
+![dark-2026.nvim](doc/screenshot.png)
+
+<sub>Neo-tree, bufferline and lualine themed alongside the editor; tmux via
+[`extras/`](extras/).</sub>
 
 ## Requirements
 
@@ -131,6 +129,36 @@ are the authoritative list.
 tmux, lazygit and lazydocker ports of the same palette live in
 [`extras/`](extras/).
 
+## Where this differs from upstream
+
+Two values are deliberately darker than VS Code's, because guides and line
+numbers that read as subtle in a GUI editor compete with the code in a terminal.
+Both are marked `LOCAL DEVIATION` in `palette.lua` with the upstream value
+recorded beside them.
+
+| Palette key | Here | Upstream | VS Code key |
+| --- | --- | --- | --- |
+| `M.indent` | `#1f1f1f` | `#8384854d` (≈`#343536` over the editor bg) | `editorIndentGuide.background1` |
+| | | `#848484` | `editorRuler.foreground` |
+| `M.fg_gutter` | `#474747` | `#858889` | `editorLineNumber.foreground` |
+| | | `#838485` | `editorIndentGuide.activeBackground1` |
+
+If you want the upstream values, override them without forking:
+
+```lua
+require("dark-2026").setup({
+  on_highlights = function(hl, p)
+    hl.LineNr = { fg = "#858889" }
+    hl.IndentLine = { fg = p.blend("#838485", p.bg, 0.3) }
+    hl.SnacksIndent = { fg = p.blend("#838485", p.bg, 0.3) }
+    hl.SnacksIndentScope = { fg = "#838485" }
+  end,
+})
+```
+
+Everything else in the palette was checked value-by-value against
+`2026-dark.json` and matches exactly.
+
 ## Contributing
 
 The palette is the source of truth. Two rules keep it that way:
@@ -182,10 +210,10 @@ the same kind colors as VS Code, and labelled as such.
 
 ## Credits
 
-A port of the built-in **2026 Dark** theme from
+A port of the built-in **Dark 2026** theme from
 [Microsoft Visual Studio Code](https://github.com/microsoft/vscode), used under
 the MIT license.
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE). Upstream attribution is in [NOTICE](NOTICE).

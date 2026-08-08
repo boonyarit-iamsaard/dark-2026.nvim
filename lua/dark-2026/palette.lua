@@ -1,6 +1,6 @@
 -- Palette for the Dark 2026 colorscheme.
 --
--- Every value below is transcribed from VS Code's built-in "2026 Dark" theme,
+-- Every value below is transcribed from VS Code's built-in "Dark 2026" theme,
 -- which is the source of truth for this port. The `-- vscode.color.key` comment
 -- beside each value names the upstream key it came from; that mapping is the
 -- only provenance record this repo carries, so treat the comments as source and

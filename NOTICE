@@ -1,0 +1,18 @@
+dark-2026.nvim
+Copyright (c) 2026 Boonyarit Iamsa-ard
+Licensed under the MIT License. See LICENSE.
+
+------------------------------------------------------------------------------
+
+The colors in this theme are hand-transcribed from "Dark 2026", a theme bundled
+with Microsoft Visual Studio Code:
+
+    Copyright (c) 2015 - present Microsoft Corporation
+    Licensed under the MIT License.
+
+    https://github.com/microsoft/vscode
+    extensions/theme-defaults/themes/2026-dark.json
+
+No Visual Studio Code source or theme file is redistributed in this repository;
+only the color values are reproduced, each annotated with the upstream key it
+came from.
