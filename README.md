@@ -9,8 +9,8 @@ and every value is traceable — each one names the VS Code key it came from.
 
 ![dark-2026.nvim](doc/screenshot.png)
 
-<sub>Neo-tree, bufferline and lualine themed alongside the editor; tmux via
-[`extras/`](extras/).</sub>
+*Neo-tree, bufferline and lualine themed alongside the editor; tmux via
+[`extras/`](extras/).*
 
 ## Requirements
 
@@ -136,12 +136,16 @@ numbers that read as subtle in a GUI editor compete with the code in a terminal.
 Both are marked `LOCAL DEVIATION` in `palette.lua` with the upstream value
 recorded beside them.
 
-| Palette key | Here | Upstream | VS Code key |
-| --- | --- | --- | --- |
-| `M.indent` | `#1f1f1f` | `#8384854d` (≈`#343536` over the editor bg) | `editorIndentGuide.background1` |
-| | | `#848484` | `editorRuler.foreground` |
-| `M.fg_gutter` | `#474747` | `#858889` | `editorLineNumber.foreground` |
-| | | `#838485` | `editorIndentGuide.activeBackground1` |
+| VS Code key | Upstream | Here |
+| --- | --- | --- |
+| `editorIndentGuide.background1` | `#8384854d` | `#1f1f1f` |
+| `editorRuler.foreground` | `#848484` | `#1f1f1f` |
+| `editorLineNumber.foreground` | `#858889` | `#474747` |
+| `editorIndentGuide.activeBackground1` | `#838485` | `#474747` |
+
+The first is translucent and resolves to about `#343536` over the editor
+background. The first two are `M.indent` in the palette, the last two
+`M.fg_gutter`.
 
 If you want the upstream values, override them without forking:
 

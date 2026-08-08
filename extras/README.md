@@ -24,7 +24,7 @@ hexes into status-line formats, so you can write your own status line against
 role names:
 
 ```tmux
-set -ga status-left "#[bg=#{@custom_bg},fg=#{@custom_cyan}] #{pane_current_command} "
+set -ga status-left "#[fg=#{@custom_cyan}] #{pane_current_command} "
 ```
 
 It deliberately styles only chrome that every tmux has — status, panes, windows,
