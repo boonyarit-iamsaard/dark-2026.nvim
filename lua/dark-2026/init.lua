@@ -5,19 +5,25 @@
 
 local M = {}
 
+-- Every field is optional: setup() merges onto the defaults below, so callers
+-- pass only what they want to change. The `?` matters — without it lua_ls
+-- reports `missing-fields` on the common `setup({})`.
 ---@class Dark2026Config
----@field transparent boolean Skip backgrounds on the editor and panel surfaces.
----@field italic_comments boolean
----@field on_highlights fun(hl: table, p: table)|nil Last-word override hook.
+---@field transparent? boolean Skip backgrounds on the editor and panel surfaces.
+---@field italic_comments? boolean
+---@field on_highlights? fun(hl: table, p: table) Last-word override hook.
+
+---@type Dark2026Config
 local defaults = {
   transparent = false,
   italic_comments = true,
   on_highlights = nil,
 }
 
+---@type Dark2026Config
 M.config = vim.deepcopy(defaults)
 
----@param opts Dark2026Config|nil
+---@param opts? Dark2026Config
 function M.setup(opts)
   M.config = vim.tbl_deep_extend("force", M.config, opts or {})
 end
