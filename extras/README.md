@@ -9,8 +9,25 @@ and none of it is required. Copy what you want.
 | File | Tool | How to use |
 | --- | --- | --- |
 | [`tmux/dark-2026.conf`](tmux/dark-2026.conf) | tmux | `source-file` it from `tmux.conf` |
-| [`lazygit/dark-2026.yml`](lazygit/dark-2026.yml) | lazygit | merge into `~/.config/lazygit/config.yml` |
+| [`lazygit/dark-2026.yml`](lazygit/dark-2026.yml) | lazygit (shell) | merge into `~/.config/lazygit/config.yml` |
+| [`lazyvim/lazygit.lua`](lazyvim/lazygit.lua) | lazygit (Neovim float) | drop into `~/.config/nvim/lua/plugins/` |
 | [`lazydocker/dark-2026.yml`](lazydocker/dark-2026.yml) | lazydocker | merge into `~/.config/lazydocker/config.yml` |
+
+## lazygit needs both files
+
+Themed twice on purpose. lazygit opened from a shell reads
+`~/.config/lazygit/config.yml`. lazygit opened from Neovim — LazyVim's
+`<leader>gg` — goes through snacks.nvim, which writes its own
+`~/.cache/nvim/lazygit-theme.yml` on every `ColorScheme` event and appends it to
+`$LG_CONFIG_FILE`. Later files win, so that generated theme overrides your
+config and the two views drift apart.
+
+snacks derives that theme from highlight groups, and its defaults pick ones that
+do not carry the right colors here: `activeBorderColor` comes from
+`MatchParen.fg`, which Dark 2026 leaves unset (VS Code draws a bracket match as
+a background only), so the focused panel border loses its accent entirely;
+`optionsTextColor` comes from `Function.fg`, the syntax purple. The Lua spec
+pins every key to the same hexes as the YAML instead. Keep the two in sync.
 
 ## Colors
 
