@@ -214,9 +214,13 @@ the same kind colors as VS Code, and labelled as such.
 
 ## Credits
 
-A port of the built-in **Dark 2026** theme from
-[Microsoft Visual Studio Code](https://github.com/microsoft/vscode), used under
-the MIT license.
+A port of **Dark 2026**, a default theme in the
+[Visual Studio Code source repository](https://github.com/microsoft/vscode),
+used under that repository's MIT license. Colors are transcribed from
+[`2026-dark.json`](https://github.com/microsoft/vscode/blob/main/extensions/theme-defaults/themes/2026-dark.json);
+no upstream file is redistributed here. See [NOTICE](NOTICE).
+
+Not affiliated with or endorsed by Microsoft.
 
 ## License
 

@@ -4,14 +4,18 @@ Licensed under the MIT License. See LICENSE.
 
 ------------------------------------------------------------------------------
 
-The colors in this theme are hand-transcribed from "Dark 2026", a theme bundled
-with Microsoft Visual Studio Code:
+The colors in this theme are hand-transcribed from "Dark 2026", a default theme
+in the Visual Studio Code source repository:
 
     Copyright (c) 2015 - present Microsoft Corporation
     Licensed under the MIT License.
 
     https://github.com/microsoft/vscode
     extensions/theme-defaults/themes/2026-dark.json
+
+That repository is MIT licensed, which is the basis for this port. Note that
+the Visual Studio Code product distributed by Microsoft is released under a
+separate proprietary license; nothing from the product build is used here.
 
 No Visual Studio Code source or theme file is redistributed in this repository;
 only the color values are reproduced, each annotated with the upstream key it
