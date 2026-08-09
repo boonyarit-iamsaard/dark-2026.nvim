@@ -195,9 +195,15 @@ replaces. That list is meant to stay short.
 Run the checks before opening a PR:
 
 ```sh
-stylua --check .
-make test   # or see .github/workflows/ci.yml
+make check  # stylua --check .
+make test   # smoke test against the current nvim
 ```
+
+CI pins [StyLua](https://github.com/JohnnyMorganz/StyLua) to **2.5.2**, so install
+that version locally if a formatting diff surprises you. It also runs
+`markdownlint-cli2` over the docs and the smoke test against Neovim v0.10.4 (the
+advertised minimum), stable, and nightly — see
+[`.github/workflows/ci.yml`](.github/workflows/ci.yml).
 
 ### Two notes on the transcription
 

@@ -5,6 +5,9 @@ on:
     branches: [main]
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   stylua:
     name: stylua
@@ -14,8 +17,19 @@ jobs:
       - uses: JohnnyMorganz/stylua-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          version: latest
+          # Pinned so a formatter release cannot fail CI on an untouched file.
+          # Bumping this is a deliberate commit; keep README's Contributing
+          # section in step with it.
+          version: 2.5.2
           args: --check .
+
+  markdownlint:
+    name: markdownlint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lint markdown
+        run: npx --yes markdownlint-cli2@0.23.2 "**/*.md"
 
   test:
     name: test (nvim ${{ matrix.nvim }})
@@ -23,7 +37,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        nvim: [stable, nightly]
+        # v0.10.4 is the last 0.10 patch and pins the minimum the README
+        # advertises; stable and nightly track forward.
+        nvim: [v0.10.4, stable, nightly]
     steps:
       - uses: actions/checkout@v4
       - uses: rhysd/action-setup-vim@v1
