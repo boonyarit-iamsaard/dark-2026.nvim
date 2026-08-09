@@ -21,11 +21,11 @@ gui:
     inactiveViewSelectedLineBgColor:
       - "#2c2d2e" # list.inactiveSelectionBackground
     cherryPickedCommitBgColor:
-      - "#37373d"
+      - "#37373d" # tab.selectedBackground
     cherryPickedCommitFgColor:
       - "#e5ba7d" # gitDecoration.modifiedResourceForeground
     markedBaseCommitBgColor:
-      - "#37373d"
+      - "#37373d" # tab.selectedBackground
     markedBaseCommitFgColor:
       - "#57a3f8" # charts.blue
     unstagedChangesColor:
@@ -33,7 +33,7 @@ gui:
     defaultFgColor:
       - "#cccccc" # terminal.foreground
     searchingActiveBorderColor:
-      - "#e5ba7d"
+      - "#e5ba7d" # gitDecoration.modifiedResourceForeground
 
   authorColors:
     "*": "#57a3f8" # charts.blue

@@ -31,13 +31,13 @@ return {
             optionsTextColor = { "#48a0c7" }, -- textLink.foreground
             selectedLineBgColor = { "#276782" }, -- editor.selectionBackground, opaque base
             inactiveViewSelectedLineBgColor = { "#2c2d2e" }, -- list.inactiveSelectionBackground
-            cherryPickedCommitBgColor = { "#37373d" },
+            cherryPickedCommitBgColor = { "#37373d" }, -- tab.selectedBackground
             cherryPickedCommitFgColor = { "#e5ba7d" }, -- gitDecoration.modifiedResourceForeground
-            markedBaseCommitBgColor = { "#37373d" },
+            markedBaseCommitBgColor = { "#37373d" }, -- tab.selectedBackground
             markedBaseCommitFgColor = { "#57a3f8" }, -- charts.blue
             unstagedChangesColor = { "#f48771" }, -- gitDecoration.deletedResourceForeground
             defaultFgColor = { "#cccccc" }, -- terminal.foreground
-            searchingActiveBorderColor = { "#e5ba7d" },
+            searchingActiveBorderColor = { "#e5ba7d" }, -- gitDecoration.modifiedResourceForeground
           },
           -- The key has to carry its own quotes: snacks writes mapping keys to
           -- YAML verbatim, and a bare `*:` is an alias anchor, not a string.
