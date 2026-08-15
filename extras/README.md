@@ -8,6 +8,7 @@ and none of it is required. Copy what you want.
 
 | File | Tool | How to use |
 | --- | --- | --- |
+| [`ghostty/dark-2026`](ghostty/dark-2026) | Ghostty | copy into `~/.config/ghostty/themes/`, then `theme = dark-2026` |
 | [`tmux/dark-2026.conf`](tmux/dark-2026.conf) | tmux | `source-file` it from `tmux.conf` |
 | [`lazygit/dark-2026.yml`](lazygit/dark-2026.yml) | lazygit (shell) | merge into `~/.config/lazygit/config.yml` |
 | [`lazyvim/lazygit.lua`](lazyvim/lazygit.lua) | lazygit (Neovim float) | drop into `~/.config/nvim/lua/plugins/` |
@@ -55,3 +56,8 @@ The 16 ANSI slots the theme uses are in
 are VS Code's built-in defaults, since the theme leaves every `terminal.ansi*`
 key unset. Pair them with `#121314` background and `#cccccc` foreground for a
 terminal scheme that matches the editor.
+
+[`ghostty/dark-2026`](ghostty/dark-2026) is exactly that pairing, written in
+Ghostty's config syntax. Port it to another emulator by keeping the same 16
+slots — the surface and cursor colors around them are the only part that needs
+translating.

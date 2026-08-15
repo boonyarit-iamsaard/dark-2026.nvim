@@ -126,7 +126,7 @@ are the authoritative list.
 
 ## Extras
 
-tmux, lazygit and lazydocker ports of the same palette live in
+Ghostty, tmux, lazygit and lazydocker ports of the same palette live in
 [`extras/`](extras/).
 
 ## Where this differs from upstream
