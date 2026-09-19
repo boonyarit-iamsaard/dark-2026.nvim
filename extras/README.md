@@ -13,6 +13,7 @@ and none of it is required. Copy what you want.
 | [`lazygit/dark-2026.yml`](lazygit/dark-2026.yml) | lazygit (shell) | merge into `~/.config/lazygit/config.yml` |
 | [`lazyvim/lazygit.lua`](lazyvim/lazygit.lua) | lazygit (Neovim float) | drop into `~/.config/nvim/lua/plugins/` |
 | [`lazydocker/dark-2026.yml`](lazydocker/dark-2026.yml) | lazydocker | merge into `~/.config/lazydocker/config.yml` |
+| [`opencode/dark-2026.json`](opencode/dark-2026.json) | OpenCode | copy into `~/.config/opencode/themes/`, then `"theme": "dark-2026"` in `tui.json` |
 
 ## lazygit needs both files
 
@@ -36,6 +37,15 @@ Every value carries a comment naming the VS Code key it came from, matching the
 convention in [`lua/dark-2026/palette.lua`](../lua/dark-2026/palette.lua). If a
 color here looks wrong next to the editor, the palette is the source of truth —
 fix it there first, then propagate.
+
+The OpenCode file is the one exception: OpenCode reads themes with a strict JSON
+parser, so it cannot carry comments. Instead its `defs` block names each hex
+after the `palette.lua` field it was copied from (`bg`, `accent`, `git_add`,
+...), and the `theme` block only ever references those names. Provenance is one
+lookup away in the palette rather than beside the value. A few of those names
+(`accent`, `text`, `error`, `info`) coincide with OpenCode's own theme keys;
+OpenCode resolves `defs` before theme keys, so `"text": "fg_term"` and
+`"markdownStrong": "text"` both mean what they look like they mean.
 
 The tmux file exposes its palette as `@custom_*` user options rather than baking
 hexes into status-line formats, so you can write your own status line against

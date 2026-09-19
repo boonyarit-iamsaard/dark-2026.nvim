@@ -126,8 +126,8 @@ are the authoritative list.
 
 ## Extras
 
-Ghostty, tmux, lazygit and lazydocker ports of the same palette live in
-[`extras/`](extras/).
+Ghostty, tmux, lazygit, lazydocker and OpenCode ports of the same palette live
+in [`extras/`](extras/).
 
 ## Where this differs from upstream
 
