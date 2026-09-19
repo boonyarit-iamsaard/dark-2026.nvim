@@ -14,6 +14,7 @@ and none of it is required. Copy what you want.
 | [`lazyvim/lazygit.lua`](lazyvim/lazygit.lua) | lazygit (Neovim float) | drop into `~/.config/nvim/lua/plugins/` |
 | [`lazydocker/dark-2026.yml`](lazydocker/dark-2026.yml) | lazydocker | merge into `~/.config/lazydocker/config.yml` |
 | [`opencode/dark-2026.json`](opencode/dark-2026.json) | OpenCode | copy into `~/.config/opencode/themes/`, then `"theme": "dark-2026"` in `tui.json` |
+| [`claude-code/dark-2026.json`](claude-code/dark-2026.json) | Claude Code | copy into `~/.claude/themes/`, then pick it in `/theme` |
 
 ## lazygit needs both files
 
@@ -38,7 +39,7 @@ convention in [`lua/dark-2026/palette.lua`](../lua/dark-2026/palette.lua). If a
 color here looks wrong next to the editor, the palette is the source of truth —
 fix it there first, then propagate.
 
-The OpenCode file is the one exception: OpenCode reads themes with a strict JSON
+The OpenCode file is an exception: OpenCode reads themes with a strict JSON
 parser, so it cannot carry comments. Instead its `defs` block names each hex
 after the `palette.lua` field it was copied from (`bg`, `accent`, `git_add`,
 ...), and the `theme` block only ever references those names. Provenance is one
@@ -46,6 +47,48 @@ lookup away in the palette rather than beside the value. A few of those names
 (`accent`, `text`, `error`, `info`) coincide with OpenCode's own theme keys;
 OpenCode resolves `defs` before theme keys, so `"text": "fg_term"` and
 `"markdownStrong": "text"` both mean what they look like they mean.
+
+The Claude Code file has neither comments nor a `defs` block — its `overrides`
+are bare hexes — so its provenance lives here instead. Every value is a
+`palette.lua` field; the two `*Dimmed` diff backgrounds are `diff_add` /
+`diff_delete` recomputed at half their upstream alpha, since Claude Code fades a
+rejected diff and the palette has no key for that. Tokens not listed fall
+through to Claude Code's built-in `dark` preset (the `rainbow_*` gradient is
+left alone on purpose).
+
+| Token(s) | Palette field |
+| --- | --- |
+| `claude`, `permissionShimmer`, `rate_limit_fill`, `briefLabelClaude` | `accent` |
+| `claudeShimmer` | `link_active` |
+| `permission` | `accent_dim` |
+| `ide` | `accent_badge` |
+| `suggestion` | `link` |
+| `text` | `fg_term` |
+| `inverseText` | `on_accent` |
+| `inactive`, `promptBorderShimmer` | `fg_dim` |
+| `inactiveShimmer`, `briefLabelYou` | `fg_ui` |
+| `subtle`, `promptBorder` | `fg_disabled` |
+| `remember`, `merged`, `effortUltra`, `purple_FOR_SUBAGENTS_ONLY` | `purple` |
+| `success` | `ok` |
+| `error` | `error` |
+| `warning` | `warn` |
+| `warningShimmer`, `fastMode`, `yellow_FOR_SUBAGENTS_ONLY` | `yellow` |
+| `autoAccept`, `fastModeShimmer` | `git_change` |
+| `planMode`, `green_FOR_SUBAGENTS_ONLY` | `green` |
+| `bashBorder`, `orange_FOR_SUBAGENTS_ONLY` | `orange` |
+| `diffAdded` / `diffRemoved` | `diff_add` / `diff_delete` |
+| `diffAddedWord` / `diffRemovedWord` | `diff_text_add` / `diff_text_del` |
+| `diffAddedDimmed` / `diffRemovedDimmed` | `diff_add` / `diff_delete` at half alpha |
+| `userMessageBackground` | `bg_panel` |
+| `userMessageBackgroundHover` | `bg_line` |
+| `bashMessageBackgroundColor` | `bg_float` |
+| `memoryBackgroundColor` | `hint_bg` |
+| `selectionBg` | `bg_visual` |
+| `rate_limit_empty` | `bg_inactive` |
+| `red_FOR_SUBAGENTS_ONLY` | `red` |
+| `blue_FOR_SUBAGENTS_ONLY` | `blue` |
+| `pink_FOR_SUBAGENTS_ONLY` | `ansi.bright_magenta` |
+| `cyan_FOR_SUBAGENTS_ONLY` | `ansi.bright_cyan` |
 
 The tmux file exposes its palette as `@custom_*` user options rather than baking
 hexes into status-line formats, so you can write your own status line against
