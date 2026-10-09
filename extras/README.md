@@ -9,6 +9,7 @@ and none of it is required. Copy what you want.
 | File | Tool | How to use |
 | --- | --- | --- |
 | [`ghostty/dark-2026`](ghostty/dark-2026) | Ghostty | copy into `~/.config/ghostty/themes/`, then `theme = dark-2026` |
+| [`terminal/dark-2026.terminal`](terminal/dark-2026.terminal) | macOS Terminal.app | double-click to import, then make it the default profile |
 | [`tmux/dark-2026.conf`](tmux/dark-2026.conf) | tmux | `source-file` it from `tmux.conf` |
 | [`lazygit/dark-2026.yml`](lazygit/dark-2026.yml) | lazygit (shell) | merge into `~/.config/lazygit/config.yml` |
 | [`lazyvim/lazygit.lua`](lazyvim/lazygit.lua) | lazygit (Neovim float) | drop into `~/.config/nvim/lua/plugins/` |
@@ -114,3 +115,19 @@ terminal scheme that matches the editor.
 Ghostty's config syntax. Port it to another emulator by keeping the same 16
 slots — the surface and cursor colors around them are the only part that needs
 translating.
+
+[`terminal/dark-2026.terminal`](terminal/dark-2026.terminal) is the same port for
+macOS Terminal.app, with two differences: it has no cursor-text color, and its
+selection is `bg_visual` — the upstream selection blended over the background —
+because the profile stores opaque colors. Terminal.app archives each color as a
+binary `NSColor`, so the profile is generated rather than hand-written: edit
+the hexes in [`terminal/build.py`](terminal/build.py), each commented with its
+VS Code key, and rerun it. `build.py --check` fails if the two have drifted.
+The colors are stored the way catppuccin's Terminal.app profiles store them, in
+generic ("calibrated") RGB rather than sRGB, so they can render a shade off the
+hexes; an sRGB-tagged profile was rejected by Terminal.app as corrupt.
+
+Terminal.app only renders 24-bit color from macOS 26 Tahoe. On earlier releases
+the profile still themes the shell, but Neovim needs `termguicolors`, so the
+colorscheme itself will not render correctly there — use Ghostty or another
+truecolor terminal.
