@@ -11,6 +11,7 @@ and none of it is required. Copy what you want.
 | [`ghostty/dark-2026`](ghostty/dark-2026) | Ghostty | copy into `~/.config/ghostty/themes/`, then `theme = dark-2026` |
 | [`terminal/dark-2026.terminal`](terminal/dark-2026.terminal) | macOS Terminal.app | double-click to import, then make it the default profile |
 | [`tmux/dark-2026.conf`](tmux/dark-2026.conf) | tmux | `source-file` it from `tmux.conf` |
+| [`btop/dark-2026.theme`](btop/dark-2026.theme) | btop | copy into `~/.config/btop/themes/`, then `color_theme = "dark-2026"` in `btop.conf` |
 | [`lazygit/dark-2026.yml`](lazygit/dark-2026.yml) | lazygit (shell) | merge into `~/.config/lazygit/config.yml` |
 | [`lazyvim/lazygit.lua`](lazyvim/lazygit.lua) | lazygit (Neovim float) | drop into `~/.config/nvim/lua/plugins/` |
 | [`lazydocker/dark-2026.yml`](lazydocker/dark-2026.yml) | lazydocker | merge into `~/.config/lazydocker/config.yml` |
