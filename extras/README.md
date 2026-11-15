@@ -16,6 +16,8 @@ and none of it is required. Copy what you want.
 | [`lazydocker/dark-2026.yml`](lazydocker/dark-2026.yml) | lazydocker | merge into `~/.config/lazydocker/config.yml` |
 | [`opencode/dark-2026.json`](opencode/dark-2026.json) | OpenCode | copy into `~/.config/opencode/themes/`, then `"theme": "dark-2026"` in `tui.json` |
 | [`claude-code/dark-2026.json`](claude-code/dark-2026.json) | Claude Code | copy into `~/.claude/themes/`, then pick it in `/theme` |
+| [`windows-terminal/dark-2026.json`](windows-terminal/dark-2026.json) | Windows Terminal | paste the scheme into `schemes` in `settings.json`, then `"colorScheme": "Dark 2026"` in a profile |
+| [`oh-my-posh/dark-2026.omp.json`](oh-my-posh/dark-2026.omp.json) | Oh My Posh | `oh-my-posh init pwsh --config <path> \| Invoke-Expression` |
 
 ## lazygit needs both files
 
@@ -91,6 +93,12 @@ left alone on purpose).
 | `pink_FOR_SUBAGENTS_ONLY` | `ansi.bright_magenta` |
 | `cyan_FOR_SUBAGENTS_ONLY` | `ansi.bright_cyan` |
 
+The Oh My Posh file is strict JSON too, so it follows the OpenCode rule: its
+`palette` block names each hex after its `palette.lua` field, and the segments
+reference only those names (`p:link`, `p:purple`, ...). The prompt layout itself
+is one owner's choice, not part of the theme; keep the `palette` block and
+restyle the segments freely.
+
 The tmux file exposes its palette as `@custom_*` user options rather than baking
 hexes into status-line formats, so you can write your own status line against
 role names:
@@ -126,6 +134,14 @@ VS Code key, and rerun it. `build.py --check` fails if the two have drifted.
 The colors are stored the way catppuccin's Terminal.app profiles store them, in
 generic ("calibrated") RGB rather than sRGB, so they can render a shade off the
 hexes; an sRGB-tagged profile was rejected by Terminal.app as corrupt.
+
+[`windows-terminal/dark-2026.json`](windows-terminal/dark-2026.json) is the
+Ghostty pairing as a Windows Terminal scheme: the same surfaces, cursor and 16
+slots, with `selectionBackground` the opaque base of
+`editor.selectionBackground`, as in Ghostty. Windows Terminal has no
+cursor-text color. The file is a `{ "schemes": [...] }` object, so it can also
+be dropped in a [JSON fragment extension](https://learn.microsoft.com/windows/terminal/json-fragment-extensions)
+directory as is.
 
 Terminal.app only renders 24-bit color from macOS 26 Tahoe. On earlier releases
 the profile still themes the shell, but Neovim needs `termguicolors`, so the

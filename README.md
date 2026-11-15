@@ -126,7 +126,7 @@ are the authoritative list.
 
 ## Extras
 
-Ghostty, macOS Terminal.app, tmux, lazygit, lazydocker, OpenCode and Claude Code ports of the same
+Ghostty, macOS Terminal.app, Windows Terminal, tmux, lazygit, lazydocker, Oh My Posh, OpenCode and Claude Code ports of the same
 palette live in [`extras/`](extras/).
 
 ## Where this differs from upstream
